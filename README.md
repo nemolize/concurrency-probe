@@ -62,7 +62,7 @@ so the cancellation mechanism itself behaves as expected.
 
 ## Observations and limits
 
-- Observed on 2026-11-06 with GitHub-hosted `ubuntu-latest`; behaviour of GitHub Actions can change.
+- Observed on 2026-11-06 with GitHub-hosted `ubuntu-latest` (image `ubuntu-26.04`, runner 2.338.2); behaviour of GitHub Actions can change.
 - The runs were started with `workflow_dispatch`, not `pull_request` or `push`.
 - In every trial, A's job lasted about 77 seconds even when A ended as `cancelled`:
   the 75-second sleep was not cut short. The effect seen here is the recorded
