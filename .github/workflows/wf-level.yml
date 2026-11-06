@@ -1,0 +1,28 @@
+name: wf-level
+
+on:
+  workflow_dispatch:
+    inputs:
+      trial:
+        description: Trial id; runs sharing it share one concurrency group
+        type: string
+        required: true
+      skip:
+        description: Skip the only job via its `if`
+        type: boolean
+        default: false
+
+concurrency:
+  group: wf-level-${{ inputs.trial }}
+  cancel-in-progress: true
+
+jobs:
+  work:
+    if: ${{ !inputs.skip }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - run: |
+          echo "start $(date -u +%T)"
+          sleep 75
+          echo "end $(date -u +%T)"
